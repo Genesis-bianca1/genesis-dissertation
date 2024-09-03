@@ -1,0 +1,323 @@
+/*General styles*/
+body { 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: white;
+    display: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1, h2, h3, p {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3 {
+    color: black;
+}
+
+h1{
+    text-indent: 15px;
+}
+
+h2 {
+    text-indent: 20px;
+}
+
+h3 {
+    text-indent: 25px;
+}
+
+p {
+    text-indent: 30px;
+    text-transform: uppercase;
+    color: white;
+
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: 1.88px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+    display: block;
+    margin: auto;
+}
+
+button:hover {
+    background-color: rgba(65, 86, 241, 0.768);
+}
+
+/*Header*/
+#logo {
+    width:300px;
+    height:90px;
+    margin:auto;
+    display:block;
+    padding: 30px;
+}
+
+/*Navigation*/
+.navigation-container {
+    background-color: black;
+    justify-content: space-around;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+a {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+    display: inline-flex;
+    gap: 30px;
+}
+
+li {
+    padding: 15px;
+    display: inline-block;
+}
+
+li:hover {
+    background-color:rgba(68, 102, 250, 0.922);
+    border-radius: 3px;
+} 
+
+/*Main Forms*/
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 100px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 300px;
+    box-sizing: border-box;
+}
+
+/*Login form*/
+.login-container {
+    background: url("../img/background.jpg");
+    height: 400px;
+    min-width: 23em;
+    max-width: 23em;
+}
+
+.register-container, .login-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1.88px solid black;
+    border-radius: 5px;
+}
+
+.register-container h1, .login-container h1 {
+    color: white;
+    text-align: center;
+}
+
+/*Registe form*/
+.register-container label, p {
+    color: white;
+    text-align:left;
+}
+  
+.register-container button {
+    background-color: rgb(35, 106, 169);
+}
+
+.register-container button:hover {
+    background-color: rgba(65, 86, 241, 0.768);
+}
+
+.register-container {
+    background: black;
+    height: 650px;
+    min-width: 24em;
+    max-width: 30em;
+}
+
+input[type=text], input[type=number], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 9px;
+    margin: 10px 0;
+    border: 1px solid rgb(21, 15, 112);
+    box-sizing: border-box;
+}
+
+/*Social page*/
+.social-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 10px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.post-form button {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: #0073b1;
+    font-size: 16px;
+}
+
+.post-form button:hover {
+    background-color: #005582;
+}
+
+.posts {
+    margin-top: 20px;
+}
+
+.post {
+    padding: 10px;
+    border-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.post p {
+    margin: 0;
+    color: #333;
+}
+
+.post span {
+    font-size: 12px;
+    color: #999;
+}
+
+/* challenge_1 */
+.exercise-container {
+    background-color: rgba(65, 52, 254, 0.224);
+    padding: 10px;
+    border-radius: 5px;
+    height: 450px;
+    justify-content: center;
+    align-items: center;
+}
+
+.exercise-container h3, h1 {
+    display: block;
+    color: black;
+}
+
+.draggable {
+    background-color: white;
+    border-radius: 30px;
+    border: 5px solid rgb(137, 152, 165);
+}
+
+.draggable:hover {
+    background-color: white;
+}
+
+#english-list li:hover {
+    border-radius: 5px;
+    background-color: white;
+}
+
+#submit {
+    width: 300px;
+    padding: 12px;
+    background-color: black;
+    color: white;
+    border: 1.5px solid rgb(21, 15, 112);
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    text-transform: uppercase;
+}
+
+#submit:hover {
+    background-color: rgba(65, 86, 241, 0.768);
+}
+
+#feedback_1 {
+    margin-top: auto;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+
+/* challenge_2 */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+}
+
+#list ul {
+    list-style-type: none;
+    padding: 0;
+    width: 300px;
+    position: relative;
+}
+
+.list_item {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    padding: 15px;
+    border-radius: 30px;
+    border: 5px solid rgba(65, 52, 254, 0.224);
+    background-color: #f9f9f9;
+    cursor: grab;
+}
+
+.list_item:hover {
+    border: 10px solid rgb(137, 152, 165);
+    background-color:rgba(65, 52, 254, 0.224);
+    cursor: grabbing;
+}
+
+.list_item.dragging {
+    opacity: 0.5;
+}
+
+/*Footer*/
+.about-container {
+    margin: 10px auto;
+    display: center;
+    justify-content:center;
+    align-items:center;
+    width: 90%;
+    max-width: 900px;
+    background-color: rgb(137, 152, 165);
+    padding: 15px;
+    top: 10vh;
+    left: 450px;
+    border-radius: 5px;
+    border-color: #4222d4;
+}
