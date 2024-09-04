@@ -30,17 +30,16 @@ h3 {
 
 p {
     text-indent: 30px;
-    text-transform: uppercase;
-    color: white;
-
+    font-size: 20px;
+    color: black;
 }
 
 button {
     width: 50%;
     padding: 10px;
-    background-color: black;
+    background-color: rgb(62, 61, 68);
     color: white;
-    border: 1.88px solid black;
+    border: 1.88px solid white;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 15px;
@@ -110,7 +109,7 @@ li:hover {
 
 /*Login form*/
 .login-container {
-    background: url("../img/background.jpg");
+    background-color: black;
     height: 400px;
     min-width: 23em;
     max-width: 23em;
@@ -120,7 +119,7 @@ li:hover {
     flex: 1;
     padding: 20px;
     box-sizing: border-box;
-    border: 1.88px solid black;
+    border: 1.88px solid grey;
     border-radius: 5px;
 }
 
@@ -130,17 +129,9 @@ li:hover {
 }
 
 /*Registe form*/
-.register-container label, p {
+.register-container label, .login-container label {
     color: white;
     text-align:left;
-}
-  
-.register-container button {
-    background-color: rgb(35, 106, 169);
-}
-
-.register-container button:hover {
-    background-color: rgba(65, 86, 241, 0.768);
 }
 
 .register-container {
@@ -215,12 +206,13 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
 
 /* challenge_1 */
 .exercise-container {
-    background-color: rgba(65, 52, 254, 0.224);
+    background: url("/19141230/img/background_2.png") ;
     padding: 10px;
     border-radius: 5px;
     height: 450px;
     justify-content: center;
     align-items: center;
+    font-size: large;
 }
 
 .exercise-container h3, h1 {
@@ -230,25 +222,24 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
 
 .draggable {
     background-color: white;
-    border-radius: 30px;
-    border: 5px solid rgb(137, 152, 165);
+    border: 5px solid rgb(26, 123, 48);
 }
 
 .draggable:hover {
-    background-color: white;
+    background-color: rgba(1, 175, 42, 0.544);
 }
 
 #english-list li:hover {
     border-radius: 5px;
-    background-color: white;
+    background-color: rgba(1, 175, 42, 0.544);
 }
 
 #submit {
-    width: 300px;
+    width: 200px;
     padding: 12px;
-    background-color: black;
+    background-color: rgb(62, 61, 68);
     color: white;
-    border: 1.5px solid rgb(21, 15, 112);
+    border: 1.88px solid black;
     border-radius: 5px;
     cursor: pointer;
     display: block;
@@ -257,7 +248,7 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
 }
 
 #submit:hover {
-    background-color: rgba(65, 86, 241, 0.768);
+    background-color: rgb(22, 83, 36);
 }
 
 #feedback_1 {
@@ -287,18 +278,19 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
 
 .list_item {
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     color: black;
     padding: 15px;
     border-radius: 30px;
-    border: 5px solid rgba(65, 52, 254, 0.224);
+    border: 5px solid rgb(26, 123, 48);
     background-color: #f9f9f9;
     cursor: grab;
 }
 
 .list_item:hover {
-    border: 10px solid rgb(137, 152, 165);
-    background-color:rgba(65, 52, 254, 0.224);
+    border: 5px solid rgb(22, 83, 36);
+    border-radius: 30px;
+    background-color: rgba(26, 214, 70, 0.738);
     cursor: grabbing;
 }
 
@@ -314,10 +306,10 @@ input[type=text], input[type=number], input[type=email], input[type=password] {
     align-items:center;
     width: 90%;
     max-width: 900px;
-    background-color: rgb(137, 152, 165);
+    background-color: rgba(65, 86, 241, 0.768);
     padding: 15px;
     top: 10vh;
     left: 450px;
     border-radius: 5px;
-    border-color: #4222d4;
+    border: 5px solid black;
 }

@@ -23,7 +23,7 @@ include_once 'header.php';
                     </ul>
                 </div><br><br>
                 <!-- Submit button to check answers -->
-                <button id="submit">Check Answers</button>
+                <button id="submit"><big>Check Answers</big></button>
 
                 <!-- Feedback section -->
                 <div id="feedback_1"></div>

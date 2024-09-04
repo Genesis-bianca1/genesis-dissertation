@@ -1,7 +1,7 @@
 //Challenge_2
 
 let current_element = "";
-let list_element = document.getElementById("list");
+let list_element = document.getElementById("numbers-list");
 let initial_x = 0,
     initial_y = 0;
 

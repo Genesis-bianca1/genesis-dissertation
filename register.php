@@ -23,7 +23,7 @@ include_once 'header.php';
                         <label><strong>Repeat Password</strong></label>
                         <input type="password" name="repeat_password" placeholder="Repeat your password" required>
                         <br><br>
-                        <button type="submit" name="submit"><strong>Create Account</strong></button>
+                        <button type="submit" name="submit"><big>Create Account</big></button>
                     </form>
                 </div>
                 <?php

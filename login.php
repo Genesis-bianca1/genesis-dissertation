@@ -13,7 +13,7 @@ include_once 'header.php';
                         <label><strong>Password</strong></label>
                         <input type="password" name="user_password" placeholder="Password" required>
                         <br><br>
-                        <button type="submit" name="submit">Log in</button>
+                        <button type="submit" name="submit"><big>Log in</big></button>
                     </form>
                 </div>
             </div>

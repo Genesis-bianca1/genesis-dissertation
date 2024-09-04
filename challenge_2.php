@@ -6,9 +6,12 @@ include_once 'header.php';
             <title>Task-Based Learning</title><br>
             <h1>Challenge - Order the numbers in ascending order</h1>
             <div class="container">
-                <ul id="list">
+                <ul id="numbers-list">
                     <!--Content is on CSS & JavaScript-->
                 </ul>
+                <button id="submit"><big>Check Answers</big></button>
+                <!-- Feedback section -->
+                <div id="feedback_2"></div>
             </div>
 
 

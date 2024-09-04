@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
         <title>Monodiction</title> 
         <link rel="stylesheet" href="/19141230/css/styles.css">
-        <img src="/19141230/img/brand.png" alt="logo" id="logo">
+        <img src="/19141230/img/logo.png" alt="logo" id="logo">
     </head>
     <body>
         <div class="navigation-container">
