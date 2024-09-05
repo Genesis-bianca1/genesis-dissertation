@@ -3,6 +3,12 @@ include_once 'header.php';
 ?>
             <title>Task-Based Learning</title>
             <h1>Challenge - Match the greeting!</h1>
+            
+            <div class="Progress-tracker">
+                <!-- Generate the php & js code for tracking the achievements within an exercise -->
+            </div>
+
+            <p><strong>At every professional setting is curtesy greeting your colleages,<br>whether it is in the morning, evening, or night.<br>Let's give this a go!</strong></p>
             <div class="exercise-container">
                 <!-- Spanish phrases list -->
                 <div class="spanish-phrases">
@@ -24,7 +30,15 @@ include_once 'header.php';
                 </div><br><br>
                 <!-- Submit button to check answers -->
                 <button id="submit"><big>Check Answers</big></button>
+                
+                <!-- While points system is mandatory -->
+                <!-- 3 core pages, home.php, social.php, challenge_1.php & scripts.js -->
 
+                <!-- Focus on this exercise and integrate inclusive features which can be swtiched on/off-->
+                <!-- For example, mp3 voice media, interactive images, different color-theme, streak-->
+        
+                
+                
                 <!-- Feedback section -->
                 <div id="feedback_1"></div>
             </div>
@@ -32,7 +46,6 @@ include_once 'header.php';
             <script src="/19141230/js/challenge_1.js"></script>
             <script scr="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
 include_once 'footer.php';
 ?>

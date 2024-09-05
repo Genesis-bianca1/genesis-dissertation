@@ -16,6 +16,21 @@ include_once 'header.php';
                         <button type="submit" name="submit"><big>Log in</big></button>
                     </form>
                 </div>
+                <?php
+                if (isset($_GET["error"])) {
+                    if ($_GET["error"] == "empty-fields") {
+                        echo "<p>Fill in every field!</p>";
+                    } else if ($_GET["error"] == "invalid-username" || "invalid-password" ) {
+                        echo "<p>Invalid username or password! Try again</p>";
+                    } else if ($_GET["error"] == "invalid-email") {
+                        echo "<p>Invalid email! Try again</p>";
+                    } else if ($_GET["error"] == "prep-statement-failure") {
+                        echo "<p>Oops! Something went wrong</p>";
+                    } else if ($_GET["error"] == "none") {
+                        header("profile.php");
+                    }
+                }
+                ?>
             </div>
             <script src="/19141230/js/scripts.js"></script>
 

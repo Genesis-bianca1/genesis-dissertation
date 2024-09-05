@@ -1,5 +1,4 @@
-//Challenge_2
-
+//Challenge_2 logic
 let current_element = "";
 let list_element = document.getElementById("numbers-list");
 let initial_x = 0,
@@ -14,7 +13,7 @@ const is_touch_device = () => {
     }
 };
 
-//Creating the list items
+//Creating the list's items
 const generate_items = (count) => {
     const items = ["seis", "tres", "nueve", "cuatro", "uno", "siete", "diez", "dos", "cinco", "ocho"];
     for (let i = 0; i < count; i++) {
@@ -23,7 +22,7 @@ const generate_items = (count) => {
 };
 
 
-//Retrieving the position of an item based on its data attribute
+//Retrieving the position of an item based on its data attributes
 const find_position = (index) => {
     let element_position;
     let list_items = document.querySelectorAll(".list_item");

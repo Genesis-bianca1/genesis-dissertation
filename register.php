@@ -29,19 +29,19 @@ include_once 'header.php';
                 <?php
                 if (isset($_GET["error"])) {
                     if ($_GET["error"] == "empty-fields") {
-                        echo "Fill in every field";
+                        echo "<p>Fill in every field</p>";
                     } else if ($_GET["error"] == "invalid-username") {
-                        echo "Invalid username, try another";
+                        echo "<p>Invalid username, try another</p>";
                     } else if ($_GET["error"] == "invalid-email") {
-                        echo "Invalid email, try another";
+                        echo "<p>Invalid email, try another</p>";
                     } else if ($_GET["error"] == "invalid-password") {
-                        echo "Choose an appropriate password";
+                        echo "<p>Choose an appropriate password</p>";
                     } else if ($_GET["error"] == "unmatching-passwords") {
-                        echo "Passwords do not match";
+                        echo "<p>Passwords do not match</p>";
                     } else if ($_GET["error"] == "prep-statement-failure") {
-                        echo "Oops! Server error";
+                        echo "<p>Oops! Server error</p>";
                     } else if ($_GET["error"] == "none") {
-                        echo "Success!";
+                        header("login.php");
                     } 
                 }
                 ?>
