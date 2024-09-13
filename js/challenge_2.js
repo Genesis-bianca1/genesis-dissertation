@@ -1,93 +1,76 @@
-//Challenge_2 logic
-let current_element = "";
-let list_element = document.getElementById("numbers-list");
-let initial_x = 0,
-    initial_y = 0;
+$(document).ready(function() {
+    
+    var dragged_element = null;
+    //Defining the correct order of steps to match with data_step attributes
+    var correct_order = [1, 2, 3, 4, 5, 6];
+    //store the order of clicks
+    var user_order =[];
+    //points start-point
+    var points = 0;
 
-const is_touch_device = () => {
-    try {
-        document.createEvent("TouchEvent");
-        return true;
-    } catch (e) {
-        return false;
-    }
-};
+    //Click events logic
 
-//Creating the list's items
-const generate_items = (count) => {
-    const items = ["seis", "tres", "nueve", "cuatro", "uno", "siete", "diez", "dos", "cinco", "ocho"];
-    for (let i = 0; i < count; i++) {
-        list_element.innerHTML += `<li class="list_item" data_index="${i + 1}">${items[i]}</li>`;
-    }
-};
+    //When number is dragged
+    $("#spanish_numbers .list_item").on("dragstart", function(event) {
+        dragged_element = event.target;
+        $(this).css('opacity', '0.5'); //Semi-transparent when dragging
+    });
 
+    $("#spanish_numbers .list_item").on("dragend", function(event) {
+        $(this).css('opacity', '1'); //Restore visibility when finished dragging
+    });
 
-//Retrieving the position of an item based on its data attributes
-const find_position = (index) => {
-    let element_position;
-    let list_items = document.querySelectorAll(".list_item");
-    list_items.forEach((element, idx) => {
-        let element_index = element.getAttribute("data_index");
-        if (index == element_index) {
-            element_position = idx;
+    //Allow dropping the number on the task
+    $("#task_steps .list_item").on("dragover", function(event) {
+        event.preventDefault(); //Prevent default action of dropping 
+    });
+
+    $("task_steps .list_item").on("drop", function(event) {
+        event.preventDefault();
+        var task_element = $(this);
+        var number = $(dragged_element).data('number');
+
+        task_element.append(`<span class="number">$`)
+    })
+
+        var step_number = $(this).data("step"); //Get the step number
+        user_order.push(step_number); //Add to user's selection
+
+        //Check if user selected all steps
+        if (user_order.length === correct_order.length) {
+            check_order(); //Calling function to check if order is correct
         }
     });
-    return element_position;
-};
 
-function start_drag(e) {
-    initial_x = is_touch_device() ? e.touches[0].clientX : e.clientX;
-    initial_y = is_touch_device() ? e.touches[0].clientY : e.clientY;
-    current_element = e.target;
-}
+    
+    //Checking user's order against correct order
+    function check_order() {
+        points =0;
 
-//Allow dropping
-function allow_drop(e) {
-    e.preventDefault();
-}
-
-const handle_drop = (e) => {
-    e.preventDefault();
-    let new_x = is_touch_device() ? e.touches[0].clientX : e.clientX;
-    let new_y = is_touch_device() ? e.touches[0].clientY : e.clientY;
-
-    let target_element = document.elementsFromPoint(new_x, new_y) [0];
-
-    if (target_element && target_element.classList.contains("list_item")) {
-        let current_index = current_element.getAttribute("data_index");
-        let target_index = target_element.getAttribute("data_index");
-
-        let[current_pos, target_pos] = [
-            find_position(current_index),
-            find_position(target_index),
-        ];
-        initial_x = new_x;
-        initial_y = new_y;
-
-        try {
-            if (current_pos < target_pos) {
-                target_element.insertAdjacentElement("afterend", current_element);
-            } else {
-                target_element.insertAdjacentElement("beforebegin", current_element);
+        //Loop through user's selection & compare with correct order
+        for(var i =0; i < correct_order.length; i++)  {
+            if (user_order[i] === correct_order[i]) {
+                points++; //Adds points for each correct answer
             }
-        } catch (error) {
-            console.error("Error while moving element:", error);
         }
+
+        //Functionalities: Update progress bar as % & show progress
+        var progress = (points / correct_order.length) * 100;
+        $("#progress_percent").text(progress + "%");
+        $("progress_bar").css("width", progress + "%");
+
+        //Show feedback based on the result
+        if (points === correct_order.length) {
+            $("#feedback_message").text("Excellent work! You matched all the steps correctly");
+        } else {
+            $("#feedback_message").text("Good effort! Your matched " + points + "out of " + correct_order.length + " steps correctly.");
+        }
+
+        //Refresh list order for future attempts
+        user_order = [];
     }
-};
 
-window.onload = async () => {
-    current_element = "";
-    list_element.innerHTML = "";
-    await generate_items(10);
-
-    let list_items = document.querySelectorAll(".list_item");
-    list_items.forEach((element) => {
-        element.draggable = true;
-        element.addEventListener("dragstart", start_drag, false);
-        element.addEventListener("dragover", allow_drop, false);
-        element.addEventListener("drop", handle_drop, false);
-        element.addEventListener("touchstart", start_drag, false);
-        element.addEventListener("touchmove", handle_drop, false);
+    //Call the "check order" function when user clicks submit button
+    $("#submit_button").on("click", function() {
+        check_order();
     });
-};

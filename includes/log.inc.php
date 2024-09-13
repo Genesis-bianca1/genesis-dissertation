@@ -1,28 +1,53 @@
 <?php
 
+//To display error messages in detail for faster fix
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+session_start();
+
+//On submit, fetch user's login input - removing any spaces
 if (isset($_POST["submit"])) {
+    require_once 'dbh.inc.php';
+    require_once 'func.inc.php';
 
-    $u_name = $_POST["user_name"];
-    $u_password = $_POST["user_password"];
+    $u_name = trim($_POST["user_name"]);
+    $u_password = trim($_POST["user_password"]);
 
-    include 'dbh.inc.php';
-
-}
-
-//Obtain user's login credentials from the POST request
-$user_name = $_POST['user_name'];
-$user_password = $_POST['user_password'];
-
-//Secure the input
-$user_name = mysqli_real_escape_string($conn, $user_name);
-
-
-$query = "SELECT * FROM users WHERE username='$user_name' AND passcode='$user_password'";
-$result = mysqli_query($conn, $query);
-
-if(mysqli_num_rows($result) == 1) {
-    $_SESSION['username'] = $user_name;
-    header("Location: /Genesis_Project/_public/index.php");
+    //Show error msgs if these functions are other but (NOT) false
+    if (empty_login_fields($u_name, $u_password) !== false) {
+        header("Location: ../login.php?error=empty-log-fields");
+        exit();
+    }
+    if (invalid_username($u_name) !== false) {
+        header("Location: ../login.php?error=invalid-u-name");
+        exit();
+    }
+    if (!existing_user($conn, $u_name) !== false) {
+        header("Location: ../login.php?error=u-not-found");
+        exit();
+    }
+    if (invalid_password($u_password) !==false) {
+        header("Location: ../login.php?error=invalid-passw");
+        exit();
+    }
+    if (incorrect_password($conn, $u_name, $u_password) !==false) {
+        header("Location: ../login.php?error=wrong-passw");
+        exit();
+    //Else, check if user exists on DB using prepared stmt
+    } else {
+        if(existing_user($conn, $u_name) !==false ) {
+            if(!incorrect_password($conn, $u_name, $u_password) !== false) {
+                $_SESSION['u_id'] = $row['id'];
+                $_SESSION['u_name_id'] = $row['username'];
+                header("Location: ../profile.php?login=sucess");
+                exit();
+            }
+        }
+    }
 } else {
-    echo "Invalid username or password";
+    //Redirect when form submission fails
+    header("Location: ../login.php?error=form-submission-fail");
+    exit();
 }

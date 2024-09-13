@@ -18,12 +18,14 @@ include_once 'header.php';
                 </div>
                 <?php
                 if (isset($_GET["error"])) {
-                    if ($_GET["error"] == "empty-fields") {
-                        echo "<p>Fill in every field!</p>";
-                    } else if ($_GET["error"] == "invalid-username" || "invalid-password" ) {
+                    if ($_GET["error"] == "empty-log-fields") {
+                        echo "<p>Fill in all fields!</p>";
+                    } else if ($_GET["error"] == "invalid-u-name" || "invalid-passw") {
                         echo "<p>Invalid username or password! Try again</p>";
-                    } else if ($_GET["error"] == "invalid-email") {
-                        echo "<p>Invalid email! Try again</p>";
+                    } else if ($_GET["error"] == "u-not-found") {
+                        echo "<p>User does not exist</p>";
+                    } else if ($_GET["error"] == "wrong-passw" || "u-not-found") {
+                        echo "<p>Incorrect username or password</p>";
                     } else if ($_GET["error"] == "prep-statement-failure") {
                         echo "<p>Oops! Something went wrong</p>";
                     } else if ($_GET["error"] == "none") {

@@ -28,17 +28,21 @@ include_once 'header.php';
                 </div>
                 <?php
                 if (isset($_GET["error"])) {
-                    if ($_GET["error"] == "empty-fields") {
+                    if ($_GET["error"] == "empty-reg-fields") {
                         echo "<p>Fill in every field</p>";
-                    } else if ($_GET["error"] == "invalid-username") {
+                    } else if ($_GET["error"] == "invalid-u-name") {
                         echo "<p>Invalid username, try another</p>";
                     } else if ($_GET["error"] == "invalid-email") {
                         echo "<p>Invalid email, try another</p>";
-                    } else if ($_GET["error"] == "invalid-password") {
+                    } else if ($_GET["error"] == "account-exists") {
+                        echo "<p>You already have an account";
+                    } else if ($_GET["error"] == "invalid-passw") {
                         echo "<p>Choose an appropriate password</p>";
-                    } else if ($_GET["error"] == "unmatching-passwords") {
+                    } else if ($_GET["error"] == "unmatching-passws") {
                         echo "<p>Passwords do not match</p>";
-                    } else if ($_GET["error"] == "prep-statement-failure") {
+                    }else if ($_GET["error"] == "reg-fail") {
+                        echo "<p>Registration failed</p>";
+                    } else if ($_GET["error"] == "prep-stmt-fail") {
                         echo "<p>Oops! Server error</p>";
                     } else if ($_GET["error"] == "none") {
                         header("login.php");

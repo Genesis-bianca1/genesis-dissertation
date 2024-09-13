@@ -1,48 +1,72 @@
 //Challenge 1 logic
-
 document.addEventListener('DOMContentLoaded', function() {
 
-    // Drag functionality on Spanish phrases
-    $('.draggable').on('dragstart', function(event) {
-        event.originalEvent.dataTransfer.setData('text/plain', event.target.id);
+    //Stores the id of the dragged phrases
+    var dragged_phrase_id;
+
+    //Add drag functionality to all elements with the 'draggable' class (Spanish phrases)
+    var draggable_phrases = document.querySelectorAll('.draggable');
+
+    //Loop - when draggin starts store its id in dragged_phrase_id
+    draggable_phrases.forEach(function(item) {
+        item.addEventListener('dragstart', function(event) {
+            dragged_phrase_id = event.target.id;
+        });
     });
 
-    // Drop functionality on English translations
-    $('.droppable').on('dragover', function(event) {
-        event.preventDefault(); // Prevent dropping items
+    //English translations to accept Spanish phrases
+    //drop functionality to 'droppable' classes
+    var droppable_phrases = document.querySelectorAll('.droppable');
+
+    //Loop - 
+    droppable_phrases.forEach(function(dropZone) {
+        dropZone.addEventListener('dragover', function(event) {
+            event.preventDefault(); //Prevent dropping item selected
+        });
+
+        dropZone.addEventListener('drop', function(event) {
+            event.preventDefault();
+
+            var dragged_phrase = document.getElementById(dragged_phrase_id);
+
+            //Append item to the drop zone to move it to english translation zone
+            event.target.appendChild(dragged_phrase);
+        });
     });
 
-    $('.droppable').on('drop', function(event) {
-        event.preventDefault();
-        const draggableElementId = event.originalEvent.dataTransfer.getData('text');
-        const droppableElementId = event.target.id;
+    //Submitting logic
+    var submit_button = document.getElementById('submit');
 
-        // Move the dragged element to the dropped position
-        $(this).append($('#' + draggableElementId));
-    });
+    //When clicking
+    submit_button.addEventListener('click', function() {
+        var correct_answers = 0;
 
-    // Function on submit click response
-    $('#submit').on('click', function() {
-        let correctAnswers = 0;
-
-        // Check if translations match each other correctly
-        if ($('#hello').find('#hola').length) {
-            correctAnswers++;
+        //Check if 'hello' matches
+        if (document.getElementById('hello').textContent  === '¡Hola!') {
+            correct_answers += 1;
+        }
+        //Check if 'good-morning' matches
+        if (document.getElementById('good-morning').textContent  === '¡Buenos días!') {
+            correct_answers += 1;
+        }
+        //Check if 'good-evening' matches
+        if (document.getElementById('good-evening').textContent  === 'Buenas tardes')) {
+            correct_answers += 1;
+        }
+        //Check if 'good-night' matches
+        if (document.getElementById('good-night').textContent  === 'Buenas noches') {
+            correct_answers += 1;
         }
 
-        if ($('#good-morning').find('#buenos-dias').length) {
-            correctAnswers++;
-        }
+        var feedback_area = document.getElementById('feedback_1');
 
-        if ($('#good-night').find('#buenas-noches').length) {
-            correctAnswers++;
-        }
-
-        // Provide feedback based on the number of correct answers
-        if (correctAnswers === 3) {
-            $('#feedback_1').text(`<p>"Great job! You matched all the greetings correctly."</p>`); //Checking if inverted speech marks are adequatly allowing editing the font-style
+        if (correct_answers === 4) {
+            feedback_area.innerHTML = `<p>Great job! You matched all the greetings correctly.</p>`;
         } else {
-            $('#feedback_1').text(`<p>"Oops, some matches are incorrect. The correct matches are: \n1. Hello = Hola\n2. Good morning = Buenos días\n3. Good night = Buenas noches."</p>`);
+            feedback_area.innerHTML = `<p>Oops! Some matches were incorrect. The correct matches are:
+            <br>1. Hello! = ¡Hola!
+            <br>2. Good morning! = ¡Buenos días!
+            <br>3. Good evening = Buenas tardes
+            <br>4. Good night = Buenas noches</p>`;
         }
     });
-});
