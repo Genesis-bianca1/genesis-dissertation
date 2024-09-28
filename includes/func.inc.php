@@ -98,7 +98,7 @@ function register_user($conn, $u_name, $f_name, $l_name, $e_mail, $u_password) {
 
 // 2 - Login Form
 
-function empty_login_fields($u_name, $u_password) {
+function empty_log_fields($u_name, $u_password) {
     $result;
     if (empty($u_name) || empty($u_password)) {
         $result = true;
@@ -108,7 +108,7 @@ function empty_login_fields($u_name, $u_password) {
 }
 
 //Checks for user in DB
-function existing_user($conn, $u_name) {
+function existing_user($conn, $u_name) { //ACTUAL FUNCTION existing_user_n_email
     //Prepared statement to check all usernames in DB
     $sql = "SELECT * FROM users WHERE username =?;";
     $stmt = mysqli_stmt_init($conn);
@@ -135,9 +135,9 @@ function existing_user($conn, $u_name) {
 
 function incorrect_password($conn, $u_name, $u_password) {
     $result;
-    $user = existing_user($conn, $u_name);
-    if ($user !== false) {
-        if (password_verify($u_password, $user['passcode'])) {
+    $existing_u = existing_user_n_email($conn, $u_name, $u_name);
+    if ($existing_u !== false) {
+        if (password_verify($u_password, $existing_u["passcode"])) {
             return false;
         } else {
             return true;
@@ -145,4 +145,30 @@ function incorrect_password($conn, $u_name, $u_password) {
     } else {
         $result = false;
     } return $result;
+}
+
+function login_user($conn, $u_name, $u_password) {
+    $existing_u = existing_user_n_email($conn, $u_name, $u_name);
+
+    if ($existing_u === false ) {
+        header("Location: ../login.php?error=u-not-found");
+        exit();
+    }
+    //Verify password
+    $hash_password = $existing_u["passcode"]; //Securely retrive users password from DB
+    $password_verify = password_verify($u_password, $hash_password);
+
+    if($password_verify === false) {
+        header("Location: ../login.php?error=incorrect-login"); //General error msg because HTTPS should not reveal sensitive error information that compromises user
+        exit();
+    } else if ($password_verify === true) {
+        session_start();
+        $_SESSION["u_id"] = $existing_u["user_id"];
+        $_SESSION["u_name_id"] = $existing_u["username"];
+        $_SESSION["u_f_name_id"] = $existing_u["forename"];
+        $_SESSION["u_l_name_id"] = $existing_u["surname"];
+        $_SESSION["email_id"] = $existing_u["email"];
+        header("Location: ../profile.php?error=none");
+        exit();
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-//To display error messages in detail for faster fix
+//Reveals error messages in detail for faster fix
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -15,8 +15,9 @@ if (isset($_POST["submit"])) {
     $u_name = trim($_POST["user_name"]);
     $u_password = trim($_POST["user_password"]);
 
-    //Show error msgs if these functions are other but (NOT) false
-    if (empty_login_fields($u_name, $u_password) !== false) {
+    //Set the "if" conditions to determine the undesirable situations/outcomes
+    //Functions below are elaborated on func.inc.php
+    if (empty_log_fields($u_name, $u_password) !== false) {
         header("Location: ../login.php?error=empty-log-fields");
         exit();
     }
@@ -33,18 +34,11 @@ if (isset($_POST["submit"])) {
         exit();
     }
     if (incorrect_password($conn, $u_name, $u_password) !==false) {
-        header("Location: ../login.php?error=wrong-passw");
+        header("Location: ../login.php?error=incorrect-login");
         exit();
-    //Else, check if user exists on DB using prepared stmt
     } else {
-        if(existing_user($conn, $u_name) !==false ) {
-            if(!incorrect_password($conn, $u_name, $u_password) !== false) {
-                $_SESSION['u_id'] = $row['id'];
-                $_SESSION['u_name_id'] = $row['username'];
-                header("Location: ../profile.php?login=sucess");
-                exit();
-            }
-        }
+        //If no issues, Log in
+        login_user($conn, $u_name, $u_password);
     }
 } else {
     //Redirect when form submission fails

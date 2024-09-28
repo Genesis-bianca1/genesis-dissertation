@@ -43,9 +43,9 @@ if (isset($_POST["submit"])) {
         header("Location: ../register.php?error=unmatching-passws");
         exit();
     } else {
-        //Proceed with registration when mistakes have not been committed on registration process
+        //Proceed with registration when mistakes have not been committed
         register_user($conn, $u_name, $f_name, $l_name, $e_mail, $u_password);
-        header("Location: ../login.php");
+        header("Location: ../login.php?error=none");
         exit();
     }
     

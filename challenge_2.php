@@ -1,17 +1,16 @@
 <?php
 include_once 'header.php';
+//If user not logged in, redirect to login page
+if (!isset($_SESSION['u_name_id'])) {
+    header("Location: login.php");
+}
 ?>
-            <h1>Challenge - Match the steps to complete a task</h1>
-            
+            <br><a id="return" href="index.php" alt="return"><strong>&#9204</strong></a>
             <div id="exercise-container" class="exercise-container">
-                <h2>Sending an Email</h2>
-                <p>Match the steps of sending an email wth the correct order in Spanish!</p>
-                
+                <p><strong><big>Sending an Email &#128233</big></strong><br><small>Match the steps of sending an email with the correct order in Spanish!</small></p>
                 <div class="progress-tracker">
-                    <p>Progress: <span id="progress">0%</span></p>
-                    <div id="progress_bar" style="width: 0%; background-color: green; height: 3px;"></div>
-                </div><br>
-                
+                    <div id="progress-bar">10%</div>
+                </div>
                 <div id="list" class="steps-container">
                     <!--6-step lists-->
                     <ul id="task_steps">
@@ -31,6 +30,7 @@ include_once 'header.php';
                         <li class="list_item" draggable="true" data_number="2">dos</li>
                     </ul>
                 </div>
+                <!-- Submit button to check answers -->
                 <button id="submit"><big>Check Answers</big></button>
                 
                 <!-- Feedback section -->

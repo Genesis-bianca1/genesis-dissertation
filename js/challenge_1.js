@@ -1,5 +1,5 @@
 //Challenge 1 logic
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function()) {
 
     //Stores the id of the dragged phrases
     var dragged_phrase_id;
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
             event.target.appendChild(dragged_phrase);
         });
     });
-
     //Submitting logic
     var submit_button = document.getElementById('submit');
 
@@ -50,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             correct_answers += 1;
         }
         //Check if 'good-evening' matches
-        if (document.getElementById('good-evening').textContent  === 'Buenas tardes')) {
+        if (document.getElementById('good-evening').textContent  === 'Buenas tardes') {
             correct_answers += 1;
         }
         //Check if 'good-night' matches
@@ -69,4 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
             <br>3. Good evening = Buenas tardes
             <br>4. Good night = Buenas noches</p>`;
         }
-    });
+    })};
