@@ -1,9 +1,11 @@
 <?php
 //Database connection parameters
-$servername = "localhost"; //XAMPP Local Host for testing purposes
-$username = "root";
-$password = "";
-$db_name = "platform";
+
+//Website Deployment Host InfinityFree
+$servername = "sql111.infinityfree.com";
+$username = "if0_37361428";
+$password = "iGkc4PNmwliH7";
+$db_name = "if0_37361428_platform";
 
 //Attempting to establish a connection with MySQL server
 $conn = mysqli_connect($servername, $username, $password, $db_name);
@@ -14,12 +16,19 @@ if (!$conn) {
     die("Failed to connect: " . mysqli_connect_error());
 }
 
-/* Credentials for connecting to InfinityFree (remote host)
+/* DB credentials for connecting to local and remote hosts
 
-$servername = "sql111.infinityfree.com"; //Website Host InfinityFree
+//Website Deployment Host InfinityFree
+$servername = "sql111.infinityfree.com";
 $username = "if0_37361428";
 $password = "iGkc4PNmwliH7";
 $db_name = "if0_37361428_platform";
+
+//XAMPP Local Host for Testing Purposes
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "platform";
 
 */
 

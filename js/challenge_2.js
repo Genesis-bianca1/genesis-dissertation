@@ -1,51 +1,69 @@
-$(document).ready(function() {
+//Code still under development, attempting to identify errors.
+
+document.addEventListener("DOMContentLoaded", function() {
     
-    var dragged_element = null;
-    //Defining the correct order of steps to match with data_step attributes
+    var dragged_number = null;
+    //Defining the correct order of steps to match with data-step attributes
     var correct_order = [1, 2, 3, 4, 5, 6];
-    //store the order of clicks
+    //Users selected order
     var user_order =[];
-    //points start-point
+    //Points start-point
     var points = 0;
 
-    //Click events logic
+    //Get all draggable numbers
+    var number_items = document.querySelector("#spanish-numbers .list_item");
+    number_items.forEach(function(item) {
 
-    //When number is dragged
-    $("#spanish_numbers .list_item").on("dragstart", function(event) {
-        dragged_element = event.target;
-        $(this).css('opacity', '0.5'); //Semi-transparent when dragging
+        //Semi-transparent when dragging
+        item.addEventListener("dragstart", function(event) {
+            dragged_number = event.target;
+            item.style.opacity = "0.5";
+        });
+
+        //Reset visibility when finished dragging
+        item.addEventListener("dragend", function(event) {
+            item.style.opacity = "1";
+        });
     });
 
-    $("#spanish_numbers .list_item").on("dragend", function(event) {
-        $(this).css('opacity', '1'); //Restore visibility when finished dragging
+    //Get all droppable items
+    var task_item = document.querySelectorAll("#task-drop .list_item");
+
+    task_item.forEach(function(task) {
+        //Allow dropping by preventing default behaviour
+        task.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+        //Drop event
+        task.addEventListener("drop", function(event) {
+            event.preventDefault();
+            
+            //Get number being dragged
+            var number = dragged_number.getAttribute("data-number");
+            //Get  step number of the task
+            var step_number = task.getAttribute("data-step");
+
+            if (!task.querySelector(".number")) {
+                //Append dragged number to the task
+                var span = document.createElement("span");
+                span.className = "number";
+                task.appendChild(span);
+
+                //Add steps to user's order
+                user_order.push(parseInt(step_number));
+                //If all steps are selected, check order
+                if(user_order.length === correct_order.length) {
+                    check_order();
+                }
+            } else {
+                alert("A number is already assigned to this step!");
+            }
+        });
     });
 
-    //Allow dropping the number on the task
-    $("#task_steps .list_item").on("dragover", function(event) {
-        event.preventDefault(); //Prevent default action of dropping 
-    });
-
-    $("task_steps .list_item").on("drop", function(event) {
-        event.preventDefault();
-        var task_element = $(this);
-        var number = $(dragged_element).data('number');
-
-        task_element.append(`<span class="number">$`)
-    })
-
-        var step_number = $(this).data("step"); //Get the step number
-        user_order.push(step_number); //Add to user's selection
-
-        //Check if user selected all steps
-        if (user_order.length === correct_order.length) {
-            check_order(); //Calling function to check if order is correct
-        }
-    });
-
-    
     //Checking user's order against correct order
     function check_order() {
-        points =0;
+        points = 0;
 
         //Loop through user's selection & compare with correct order
         for(var i =0; i < correct_order.length; i++)  {
@@ -54,23 +72,29 @@ $(document).ready(function() {
             }
         }
 
-        //Functionalities: Update progress bar as % & show progress
-        var progress = (points / correct_order.length) * 100;
-        $("#progress_percent").text(progress + "%");
-        $("progress_bar").css("width", progress + "%");
+        //Progress bar reflects exercise performance
+        var prog_bar = document.getElementById("progress-bar");
 
-        //Show feedback based on the result
-        if (points === correct_order.length) {
-            $("#feedback_message").text("Excellent work! You matched all the steps correctly");
-        } else {
-            $("#feedback_message").text("Good effort! Your matched " + points + "out of " + correct_order.length + " steps correctly.");
+        //Bar width reflects % of correct answer
+        var score = (points / correct_order.length) * 100;
+        prog_bar.style.width = score + "%";
+        prog_bar.textContent = Math.round(score) + "%";
+
+        var feedback = document.getElementById("feedback-2");
+            //Show feedback based on the result
+            if (points === correct_order.length) {
+                feedback.innerHTML = `<p>Excellent work! You organised the task correctly</p>`;
+            } else {
+                feedback.innerHTML = `<p>Good effort! Your matched ` + points + `out of ` + correct_order.length + ` steps correctly.</p>`;
+            }
+
+            //Refresh list order for future attempts
+            user_order = [];
         }
 
-        //Refresh list order for future attempts
-        user_order = [];
-    }
-
-    //Call the "check order" function when user clicks submit button
-    $("#submit_button").on("click", function() {
-        check_order();
+        //Check the order when the user clicks submit
+        var submit_button = document.getElementById("submit");
+        submit_button.addEventListener("click", function() {
+            check_order();
+        });
     });

@@ -4,21 +4,22 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-//Fetch the user details from registration form
-if (isset($_POST["submit"])) {
+//Securely post the user details from registration form
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once 'dbh.inc.php';
     require_once 'func.inc.php';
 
-    $u_name = $_POST["user_name"];
-    $f_name = $_POST["first_name"];
-    $l_name = $_POST["last_name"];
-    $e_mail = $_POST["e-mail"];
-    $u_password = $_POST["user_password"];
-    $rep_password = $_POST["repeat_password"];
+    $u_name = htmlspecialchars($_POST["user_name"], ENT_QUOTES, 'UTF-8');
+    $f_name = htmlspecialchars($_POST["first_name"], ENT_QUOTES, 'UTF-8');
+    $l_name = htmlspecialchars($_POST["last_name"], ENT_QUOTES, 'UTF-8');
+    $e_mail = htmlspecialchars($_POST["e-mail"], ENT_QUOTES, 'UTF-8');
+    $u_password = htmlspecialchars($_POST["user_password"], ENT_QUOTES, 'UTF-8');
+    $rep_password = htmlspecialchars($_POST["repeat_password"], ENT_QUOTES, 'UTF-8');
 
 
-    //Set the "if" conditions to lay out the undesirable situations/outcomes
+    //Set the "if" conditions to detect for undesirable situations/outcomes
     //Functions below are elaborated on func.inc.php
+    //Error handling set
     if (empty_reg_fields($u_name, $f_name, $l_name, $e_mail, $u_password, $rep_password) !== false) {
         header("Location: ../register.php?error=empty-reg-fields");
         exit();
@@ -48,7 +49,7 @@ if (isset($_POST["submit"])) {
         header("Location: ../login.php?error=none");
         exit();
     }
-    
+    //If errors are detected, redirect to registration page
 } else {
     header("Location: ../register.php?error=reg-fail");
     exit();

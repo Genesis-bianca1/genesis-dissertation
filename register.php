@@ -2,7 +2,8 @@
 include_once 'header.php';
 ?>
             <div class="form-container">
-            <div class=errors>
+                <!--Error handling-->
+                <div class=errors>
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "empty-reg-fields") {
@@ -22,11 +23,12 @@ include_once 'header.php';
                         } else if ($_GET["error"] == "prep-stmt-fail") {
                             echo "<p>Oops! Server error.</p>";
                         } else if ($_GET["error"] == "none") {
-                            header("login.php");
+                            header("Location: login.php");
                         } 
                     }
                     ?>
                 </div>
+                <!--Registration from and mandatory fields-->
                 <div class="register-container">
                     <h1>Sign Up</h1>
                     <form action="/19141230/includes/register.inc.php" method="POST">

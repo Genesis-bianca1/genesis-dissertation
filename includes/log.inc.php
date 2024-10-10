@@ -1,22 +1,24 @@
 <?php
 
 //Reveals error messages in detail for faster fix
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
 session_start();
 
-//On submit, fetch user's login input - removing any spaces
-if (isset($_POST["submit"])) {
+//On submit, post user's login input
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once 'dbh.inc.php';
     require_once 'func.inc.php';
 
-    $u_name = trim($_POST["user_name"]);
-    $u_password = trim($_POST["user_password"]);
+    //Secure transfer of login inputs
+    $u_name = htmlspecialchars($_POST["user_name"], ENT_QUOTES, 'UTF-8');
+    $u_password = htmlspecialchars($_POST["user_password"], ENT_QUOTES, 'UTF-8');
 
     //Set the "if" conditions to determine the undesirable situations/outcomes
     //Functions below are elaborated on func.inc.php
+    //Error handlers set
     if (empty_log_fields($u_name, $u_password) !== false) {
         header("Location: ../login.php?error=empty-log-fields");
         exit();
@@ -41,7 +43,7 @@ if (isset($_POST["submit"])) {
         login_user($conn, $u_name, $u_password);
     }
 } else {
-    //Redirect when form submission fails
+    //Redirect to login page when form submission fails
     header("Location: ../login.php?error=form-submission-fail");
     exit();
 }

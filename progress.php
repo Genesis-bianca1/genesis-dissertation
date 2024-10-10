@@ -2,16 +2,17 @@
 include_once 'header.php';
 
 //Check is user logged in
-if (!isset($_SESSION['u_name_id'])) {
+if (!isset($_SESSION["u_id"])) {
     header("Location: login.php");
 }
 
 ?>
+<!--Development of this page is on hold due to prioritising fixing database communication bugs between the tables-->
 
-            <br><a id="return" href="index.php" alt="return"><strong>&#9204</strong></a>
             <div class="progress-container">
-                <!--User enters progress related data to compare with original/previous data-->
+                <!--User enters progress-related data to compare with original/previous data showed on record-results container-->
                 <div class="record">
+                    <!--Question & answers text area-->
                     <p><strong>What did you learn today?</strong></p>
                     <form action="/includes/record.inc.php" method="POST">
                         <textarea name="content" placeholder="New word of the day?" required></textarea>
@@ -30,29 +31,29 @@ if (!isset($_SESSION['u_name_id'])) {
                     </form><br>
                     <button>Update</button><br>
                 </div>
-                <!--Illustrates progress-related data previously entered by user-->
+                <!--Illustrates/prints progress-related data previously entered by user-->
                 <div class="record-results">
-                    <p><strong><big>My Report</big></strong></p>
                     <table action="/includes/record.inc.php" method="POST">
                         <tbody>
                             <tr>
-                                <td><span style='font-size:30px;'>&#128681 </span><strong>Original Goal</strong> <?php echo "<p>echo selected goal WITH timestamp</p>" ?></td>
-                                <td><span style='font-size:30px;'>&#128161 </span><strong>My current focus</strong> <?php echo "<p>echo</p>" ?></td>
+                                <td><strong>Original Goal </strong><span style='font-size:30px;'> &#128681 </span> <?php echo "<p>My goal goes here...</p>" ?></td>
+                                <td><strong>My current focus </strong><span style='font-size:30px;'> &#128161 </span> <?php echo "<p>My focus goes here...</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><span style='font-size:30px;'>&#128202 </span><strong>High Score</strong> <?php echo "<p>echo</p>" ?></td>
-                                <td><span style='font-size:30px;'>&#128142 </span><strong>Total Score</strong> <?php echo "<p>echo</p>" ?></td>
+                                <td><strong>High Score </strong><span style='font-size:30px;'> &#128202 </span> <?php echo "<p>0%</p>" ?></td>
+                                <td><strong>Total Score </strong><span style='font-size:30px;'> &#128142 </span> <?php echo "<p>0</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><span style='font-size:30px;'>&#128204 </span><strong>My original weakness</strong> <?php echo "<p>echo</p>" ?></td>
-                                <td><span style='font-size:30px;'>&#128204 </span><strong>My current weakness</strong> <?php echo "<p>echo</p>" ?></td>
+                                <td><strong>My original weakness </strong><span style='font-size:30px;'> &#128204 </span> <?php echo "<p>My weakness goes here...</p>" ?></td>
+                                <td><strong>My current weakness </strong><span style='font-size:30px;'> &#128204 </span> <?php echo "<p>My weakness goes here...</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><span style='font-size:30px;'>&#9889 </span><strong>My strenght</strong> <?php echo "<p>echo</p>" ?></td>
-                                <td><span style='font-size:30px;'>&#9889 </span><strong>My current strenght</strong> <?php echo "<p>echo</p>" ?></td>
+                                <td><strong>My strenght </strong><span style='font-size:30px;'> &#9889 </span><?php echo "<p>My strength goes here...</p>" ?></td>
+                                <td><strong>My current strenght </strong><span style='font-size:30px;'> &#9889 </span> <?php echo "<p>My strength goes here...</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><span style='font-size:30px;'>&#9749 </span><strong>Streak</strong> <?php echo "<p>echo</p>" ?></td>
+                                <td><strong>Streak </strong><span style='font-size:30px;'> &#9749 </span><?php echo "<p>0</p>" ?>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

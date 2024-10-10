@@ -1,6 +1,7 @@
 <?php
 include_once 'header.php';
 ?>
+            <!--Error handlers-->
             <div class="form-container">
             <div class=errors>
                     <?php
@@ -23,14 +24,14 @@ include_once 'header.php';
                     }
                     ?>
                 </div>
+                
+                <!--To verify login inputs, POST user_name & user_password-->
                 <div class="login-container">
                     <h1>Login</h1><br>
-                    <form action="/19141230/includes/log.inc.php" method="POST"> <!-- Function API login-->
-                        <!--'required' html form validation for user ID-->
+                    <form action="/19141230/includes/log.inc.php" method="POST">
                         <label><strong>Username</strong></label>
-                        <input type="text" name="user_name" placeholder="Username" required> <!--oninput="validate_user_id(this)"-->
+                        <input type="text" name="user_name" placeholder="Username" required>
                         <br><br>
-                        <!--'required' html form validation for password-->
                         <label><strong>Password</strong></label>
                         <input type="password" name="user_password" placeholder="Password" required>
                         <br><br>
@@ -38,8 +39,9 @@ include_once 'header.php';
                     </form>
                 </div>
             </div>
+            
+            <!--JavaScripts-->
             <script src="/19141230/js/scripts.js"></script>
-
 <?php
 include_once 'footer.php';
 ?>

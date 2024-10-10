@@ -1,3 +1,5 @@
+//Code is under development
+//Level progression system that reveals the next hardest challenge when completing the previous correctly
 //GET next challenge when page loads
 $(document).ready(function() {
     $.ajax({
@@ -16,23 +18,3 @@ $(document).ready(function() {
         }
     });
 });
-
-
-function locked_exercises()
-
-//FILL BAR FUNCTION TO USE WHEN USER ANSWERS CORRECTLY TO EXERCISES
-//SIMPLY CALL THE FUNCTION "function fill_bar()"
-function fill_bar() {
-    var bar = document.getElementById("progress-bar")
-    var width = 10;
-    var id = setInterval(frame, 10);
-    function frame() {
-        if (width >= 100) {
-            clearInterval(id);
-        } else {
-            width++;
-            bar.style.width = width + '%';
-            bar.innetHTML = width * 1 + '%';
-        }
-    }
-}
