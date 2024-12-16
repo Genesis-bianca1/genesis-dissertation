@@ -33,9 +33,10 @@ if (!isset($_SESSION["u_id"])) {
                 <h3>What's on your mind? &#9997</h3>
                 <p>Show off your skills to the world!<br>Posting can be a good way of learning from others</p>
                 <div class="post-form">
-                    <form action="/includes/social.inc.php" method="POST">
+                    <form action="/includes/social.inc.php" method="POST" enctype="multipart/form-data">
                         <textarea name="content" placeholder="Share what you are thinking in 255 characters or less" required></textarea>
-                            <button type="submit" name="submit_post">Post thought</button>
+                        <input type="file" name="file_to_upload" id="file_to_upload">
+                        <button type="submit" value="Upload" name="submit_post">Post thought</button>
                     </form>
                 </div>
                 

@@ -41,18 +41,18 @@ if (!isset($_SESSION["u_id"])) {
                             </tr>
                             <tr>
                                 <td><strong>High Score </strong><span style='font-size:30px;'> &#128202 </span> <?php echo "<p>0%</p>" ?></td>
-                                <td><strong>Total Score </strong><span style='font-size:30px;'> &#128142 </span> <?php echo "<p>0</p>" ?></td>
+                                <td><strong>Total Score </strong><span style='font-size:30px;'> &#128142 </span> <?php echo "<p>" . $_SESSION["points"] . "</p>" ?></td>
                             </tr>
                             <tr>
                                 <td><strong>My original weakness </strong><span style='font-size:30px;'> &#128204 </span> <?php echo "<p>My weakness goes here...</p>" ?></td>
                                 <td><strong>My current weakness </strong><span style='font-size:30px;'> &#128204 </span> <?php echo "<p>My weakness goes here...</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><strong>My strenght </strong><span style='font-size:30px;'> &#9889 </span><?php echo "<p>My strength goes here...</p>" ?></td>
-                                <td><strong>My current strenght </strong><span style='font-size:30px;'> &#9889 </span> <?php echo "<p>My strength goes here...</p>" ?></td>
+                                <td><strong>My original strength </strong><span style='font-size:30px;'> &#9889 </span><?php echo "<p>My strength goes here...</p>" ?></td>
+                                <td><strong>My current strength </strong><span style='font-size:30px;'> &#9889 </span> <?php echo "<p>My strength goes here...</p>" ?></td>
                             </tr>
                             <tr>
-                                <td><strong>Streak </strong><span style='font-size:30px;'> &#9749 </span><?php echo "<p>0</p>" ?>
+                                <td><strong>Streak </strong><span style='font-size:30px;'> &#9749 </span><?php echo "<p>" . $_SESSION["u_streak"] . "</p>"?>
                                 </td>
                             </tr>
                         </tbody>

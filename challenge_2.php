@@ -16,21 +16,21 @@ if (!isset($_SESSION["u_id"])) {
                 <div id="list" class="steps-container">
                     <!--6-step lists-->
                     <ul id="spanish-numbers">
-                        <li class="list_item" data-number="4" draggable="true"><strong>cuatro</strong></li>
-                        <li class="list_item" data-number="1" draggable="true"><strong>uno</strong></li>
-                        <li class="list_item" data-number="6" draggable="true"><strong>seis</strong></li>
-                        <li class="list_item" data-number="3" draggable="true"><strong>tres</strong></li>
-                        <li class="list_item" data-number="5" draggable="true"><strong>cinco</strong></li>
-                        <li class="list_item" data-number="2" draggable="true"><strong>dos</strong></li>
+                        <li class="drag" draggable="true" id="cuatro"><strong>cuatro</strong></li>
+                        <li class="drag" draggable="true" id="uno"><strong>uno</strong></li>
+                        <li class="drag" draggable="true" id="seis"><strong>seis</strong></li>
+                        <li class="drag" draggable="true" id="tres"><strong>tres</strong></li>
+                        <li class="drag" draggable="true" id="cinco"><strong>cinco</strong></li>
+                        <li class="drag" draggable="true" id="dos"><strong>dos</strong></li>
                     </ul>
                     <!--Empty droppable area-->
                     <ul id="task-drop">
-                        <li class="list_item" data-step="5"></li>
-                        <li class="list_item" data-step="2"></li>
-                        <li class="list_item" data-step="1"></li>
-                        <li class="list_item" data-step="3"></li>
-                        <li class="list_item" data-step="6"></li>
-                        <li class="list_item" data-step="4"></li>
+                        <li class="drop" id="5"></li>
+                        <li class="drop" id="2"></li>
+                        <li class="drop" id="1"></li>
+                        <li class="drop" id="3"></li>
+                        <li class="drop" id="6"></li>
+                        <li class="drop" id="4"></li>
                     </ul>
                     <!--Steps of sending an email-->
                     <ul id="task-steps">
@@ -51,7 +51,9 @@ if (!isset($_SESSION["u_id"])) {
             
             <!--JavaScripts & JQuery-->
             <script src="/19141230/js/challenge_2.js"></script>
+            <script src="/19141230/js/audio.js"></script>
             <script scr="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             
 <?php
 include_once 'footer.php';

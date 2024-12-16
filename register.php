@@ -32,8 +32,8 @@ include_once 'header.php';
                 <div class="register-container">
                     <h1>Sign Up</h1>
                     <form action="/19141230/includes/register.inc.php" method="POST">
-                        <label><strong>Username</strong></label>
-                        <input type="text" name="user_name" placeholder="The username you will use to log in" required>
+                        <label><strong>User ID</strong></label>
+                        <input type="number" name="user_name" placeholder="Your unique login ID (Up to 8 numbers)" required>
                         <br>
                         <label><strong>First name</strong></label>
                         <input type="text" name="first_name" placeholder="Your name" required>

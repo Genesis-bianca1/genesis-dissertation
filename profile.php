@@ -13,27 +13,32 @@ if (!isset($_SESSION["u_id"])) {
 
             <div class="profile-container">
                 <div class="personal-info">
-                    <button id="edit" type="submit">Edit my details</button>
-                    <h1>Profile &#128100</h1>
-                    <p><strong>Bio: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><br>
-                    
+                    <h1>Profile</h1>
+                    <img src="/19141230/img/avatar.png" alt="Avatar" class="avatar"><br>
+
                     <!--Display user details on profile container-->
                     <?php
                         //From users DB table
-                        echo "<h2>Welcome " . $_SESSION["u_f_name_id"] ." " . $_SESSION["u_l_name_id"] . "! </h2>";
-                        echo "<p><strong>ID:</strong> " . $_SESSION["u_id"] . "</p>";
-                        echo "<p><strong>Email:</strong> " . $_SESSION["email_id"] . "</p><br>";
-
-                        echo"<h3>Performance Information:</h3>";
+                        echo "<h2><big>" . $_SESSION["u_f_name_id"] ." " . $_SESSION["u_l_name_id"] . "</big></h2>";
+                        echo "<p><strong>Bio</strong> ECM Alumni, OBU.</p><br>";
+                        echo "<p><strong>ID</strong> " . $_SESSION["u_id"] . "</p>";
+                        echo "<p><strong>Email</strong> " . $_SESSION["email_id"] . "</p><br>";
+                    ?>
+                    <button id="edit" type="submit">Edit my details</button>
+                </div>
+                <div class="personal-data">
+                    <?php
+                        echo"<h3><u>Performance Information</u></h3>";
                         echo "<p><strong>Current Level:</strong> " . $_SESSION["level"] . "</p><br>";
                         
                         //From users_activity DB table
-                        echo"<h3>Activity Information:</h3>";
-                        echo "<p><strong>Streak:</strong> " . $_SESSION["record"] . "days</p>";
-                        echo "<p><strong>Last session:</strong> " . $_SESSION["last_d_login"] .", " .  $_SESSION["last_t_login"] . "</p>";
-                        echo "<p><strong>Commitment period:</strong> " . $_SESSION["start_date"] . ", " . $_SESSION["s_lock_t"] . " - " . $_SESSION["end_date"] . ", " . $_SESSION["e_lock_t"] . "</p>";
+                        echo"<h3><u>Activity Information</u></h3>";
+                        echo "<p><strong>Streak:</strong> " . $_SESSION["u_streak"] . " days</p>";
+                        echo "<p><strong>Last session:</strong> " . $_SESSION["last_login"] . "</p><br>";
+                        echo"<h3><u>Learner Settings</u></h3>";
+                        echo "<p><strong>Commitment Period:<br></strong> From <strong>" . $_SESSION["s_lock_d"] . "</strong>, at <strong>" . $_SESSION["s_lock_t"] . "</strong><br> Until <strong>" . $_SESSION["e_lock_d"] . "</strong>, at <strong>" . $_SESSION["e_lock_t"] . "</strong></p>";
                     ?>
-                    <p style="text-shadow: 5px 10px 5px white;">Think you will be going away for a while?<button id="freeze" type="submit">Freeze streak</button></p>
+                    <p><strong>Think you will be going away for a while?</strong><button id="freeze" type="submit">Freeze streak</button></p>
                 </div>
             </div>
 <?php

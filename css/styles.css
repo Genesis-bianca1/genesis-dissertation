@@ -60,11 +60,13 @@ button:hover {
 }
 
 button:active {
-    background-color: #292b2d;
+    background-color: rgb(88, 83, 53);
+    border-color: white;
+    color: white;
 }
 
 table, .personal-info, .social-container {
-    box-shadow: 0px 0 5px black, 0px 0 10px grey, 0px 0 15px rgb(198, 188, 127);
+    box-shadow: 0 4px 8px 0 black, 0px 0 10px grey, 0px 0 15px rgb(198, 188, 127);
 }
 
 .errors {
@@ -76,6 +78,10 @@ table, .personal-info, .social-container {
     font-size: 1.7em;
     color: red;
     padding: 5px;
+}
+
+.profile-container div, .posts, .exercise-container #submit {
+    margin-top: 20px;
 }
 
 /* HEADER.PHP */
@@ -214,43 +220,43 @@ input[type=reset], input[type=submit] {
 }
 
 /* PROFILE PAGE */
+.profile-container {
+    width: 80%;
+    margin: auto;
+}
 
+/*FIRST*/
 .personal-info {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgb(232, 232, 212);
-    border-radius: 2px;
+    max-width: 35%;
+    height: 370px;
+    float: left;
+    text-align: center;
+    background-image: url("/19141230/img/white_2.jpg");
+    box-shadow: 0 2px 10px rgba(51, 47, 47, 0.879);
+}
+
+/*SECOND*/
+.personal-data {
+    width: 60%;
+    height: 425px;
+    float: right;
+    background-color: rgb(214, 221, 216);
+}
+
+.personal-data, .personal-info {
+    border-radius: 3px;
+    padding: 3px;
 }
 
 #edit {
-    margin-top: 5px;
-    margin-right: 0%;
-    border: 1.88px solid rgb(129, 129, 129);
-    background-color: white;
-    box-shadow: 0 0px 25px rgba(119, 119, 120, 0.673);
-    color: black;
-    border-radius: 25px;
-    padding: 5px;
-    width: 120px;
-}
-
-#edit:hover {
-    background-color: #0073b1;
-    color: white;
-}
-#edit:active {
-    background-color: #292b2d;
+    width: 300px;
+    max-width: 100%;
 }
 
 #freeze {
-    border-radius: 25px;
-    background-color: #0073b1;
-    max-width: 120px;
-    padding: 5px;
-    margin-right: 0%;
-    margin-top: -4.7%;
-    margin-bottom: 25%;
+    width: 140px;
+    max-width: 100%;
+    float: right;
 }
 #freeze:active {
     background-color: #292b2d;
@@ -280,10 +286,6 @@ input[type=reset], input[type=submit] {
 
 .post-form button {
     cursor: pointer;
-}
-
-.posts {
-    margin-top: 20px;
 }
 
 .post {
@@ -385,10 +387,6 @@ input[type=reset], input[type=submit] {
     margin-top: 0;
 }
 
-.exercise-container #submit {
-    margin-top: 20px;
-}
-
 .steps-container, .greetings-container {
     box-shadow: 0 0px 20px black;
 }
@@ -398,20 +396,23 @@ input[type=reset], input[type=submit] {
     border: 2px solid rgb(58, 57, 57);
 }
 
+.draggable, #list-drop .droppable {
+    width: 170px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
 .draggable, #english-list li {
     width: 170px;
     height: 25px;
     border: 2px solid rgb(58, 57, 57);
 }
 
-.draggable:hover, #spanish-numbers .list_item:hover {
+.draggable:hover, #spanish-numbers .drag:hover {
     border-radius: 25px;
     cursor: grab;
-}
-
-#list-drop .droppable {
-    width: 170px;
-    height: 25px;
 }
 
 #task-drop li, #list-drop .droppable {
@@ -442,18 +443,18 @@ input[type=reset], input[type=submit] {
     width: 80px;
 }
 
-#spanish-numbers .list_item {
+#spanish-numbers .drag {
     height: 25px;
     width: 70px;
 }
 
-#spanish-list li:hover, #spanish-numbers .list_item:hover {
+#spanish-list li:hover, #spanish-numbers .drag:hover {
     background-color: black;
     color: white;
     cursor: pointer;
 }
 
-#spanish-list li:active, #spanish-numbers .list_item:active {
+#spanish-list li:active, #spanish-numbers .drag:active {
     cursor: grabbing;
 }
 
@@ -503,11 +504,11 @@ input[type=reset], input[type=submit] {
     border: 2px solid rgb(58, 57, 57);
 }
 
-#spanish-numbers .list_item {
+#spanish-numbers .drag {
     background-color: rgba(255, 206, 9, 0.775);
 }
 
-#spanish-numbers .list_item.dragging {
+#spanish-numbers .drag.dragging {
     opacity: 0.5;
 }
 
@@ -694,4 +695,11 @@ table {
 .record p {
     padding-left: 20px;
     word-break: keep-all;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }

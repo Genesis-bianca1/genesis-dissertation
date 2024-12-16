@@ -2,10 +2,10 @@
 //Database connection parameters
 
 //Website Deployment Host InfinityFree
-$servername = "sql111.infinityfree.com";
-$username = "if0_37361428";
-$password = "iGkc4PNmwliH7";
-$db_name = "if0_37361428_platform";
+$servername = "localhost";
+$username = "root";
+$password = "";
+$db_name = "platform";
 
 //Attempting to establish a connection with MySQL server
 $conn = mysqli_connect($servername, $username, $password, $db_name);

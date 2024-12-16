@@ -10,7 +10,7 @@ if (!isset($_SESSION["u_id"])) {
 <!--This page is under development, back-end complications prevented its completion in Sprint 5-->
 
                 <div class="lock-container">
-                    <h2>For you,<br>By you,<br>Because of you</h2>
+                    <h4>For you<br>By you<br>Because of you</h4>
 
                     <div class="slideshow">
                         <img class="slides" src="/19141230/img/anywhere.jpg">
@@ -23,10 +23,10 @@ if (!isset($_SESSION["u_id"])) {
                     <form id="lock" action="/19141230/includes/lock.inc.php" method="POST">
                     <label><strong>Make your own rules</strong><span style="font-size: 40px;">&#x1F512</span></label><br><br>
                         <!--Modity to enter date data types & time-->
-                        <input type="s_date" name="s_date" placeholder="Start lockdown date" required><br><br>
-                        <input type="e_date" name="e_date" placeholder="End lockdown date" required><br><br>
-                        <input type="s_time" name="s_time" placeholder="Start time" required><br><br>
-                        <input type="e_time" name="e_time" placeholder="End time" required><br>
+                        <input type="date" name="s_date" required>
+                        <input type="time" name="s_time" required><br><br>
+                        <input type="date" name="e_date" required>
+                        <input type="time" name="e_time" required><br>
                         <br>
                         <!--Submit settings to users_activity DB table-->
                         <button type="submit" name="submit"><big>Set Lockdown</big></button>

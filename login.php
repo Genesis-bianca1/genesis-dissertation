@@ -29,8 +29,8 @@ include_once 'header.php';
                 <div class="login-container">
                     <h1>Login</h1><br>
                     <form action="/19141230/includes/log.inc.php" method="POST">
-                        <label><strong>Username</strong></label>
-                        <input type="text" name="user_name" placeholder="Username" required>
+                        <label><strong>User ID</strong></label>
+                        <input type="number" name="user_name" placeholder="Your unique ID (Up to 8 numbers)" required>
                         <br><br>
                         <label><strong>Password</strong></label>
                         <input type="password" name="user_password" placeholder="Password" required>

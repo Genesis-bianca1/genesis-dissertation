@@ -47,6 +47,7 @@ if (!isset($_SESSION["u_id"])) {
             <script src="/19141230/js/challenge_1.js"></script>
             <script scr="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="/19141230/js/audio.js"></script>
             
             <!-- Unit Test for exercise functionality below (remove comment tags to see results)
             <script src="/19141230/test/test_challenge_1.js"></script>

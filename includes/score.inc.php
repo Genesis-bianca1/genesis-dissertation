@@ -20,7 +20,7 @@ if (!mysqli_stmt_prepare($stmt, $sql)) {
 }
 
 //Replaces user streak
-$sql = "REPLACE INTO streak FROM users_activity WHERE user_id = ?";
+$sql = "REPLACE INTO streak FROM users_lock_settings WHERE user_id = ?";
 $stmt = mysqli_stmt_init($conn);
 if (!mysqli_stmt_prepare($stmt, $sql)) {
     mysqli_stmt_bind_param($stmt, "i", $u_id);
